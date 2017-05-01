@@ -13,8 +13,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcutil"
+	"github.com/ltcsuite/ltcd/btcjson"
+	"github.com/ltcsuite/ltcutil"
 	flags "github.com/jessevdk/go-flags"
 )
 
@@ -26,12 +26,12 @@ const (
 )
 
 var (
-	btcdHomeDir           = btcutil.AppDataDir("btcd", false)
+	ltcdHomeDir           = btcutil.AppDataDir("ltcd", false)
 	btcctlHomeDir         = btcutil.AppDataDir("btcctl", false)
 	btcwalletHomeDir      = btcutil.AppDataDir("btcwallet", false)
 	defaultConfigFile     = filepath.Join(btcctlHomeDir, "btcctl.conf")
 	defaultRPCServer      = "localhost"
-	defaultRPCCertFile    = filepath.Join(btcdHomeDir, "rpc.cert")
+	defaultRPCCertFile    = filepath.Join(ltcdHomeDir, "rpc.cert")
 	defaultWalletCertFile = filepath.Join(btcwalletHomeDir, "rpc.cert")
 )
 
@@ -272,17 +272,17 @@ func loadConfig() (*config, []string, error) {
 }
 
 // createDefaultConfig creates a basic config file at the given destination path.
-// For this it tries to read the btcd config file at its default path, and extract
+// For this it tries to read the ltcd config file at its default path, and extract
 // the RPC user and password from it.
 func createDefaultConfigFile(destinationPath string) error {
-	// Read btcd.conf from its default path
-	btcdConfigPath := filepath.Join(btcdHomeDir, "btcd.conf")
-	btcdConfigFile, err := os.Open(btcdConfigPath)
+	// Read ltcd.conf from its default path
+	ltcdConfigPath := filepath.Join(ltcdHomeDir, "ltcd.conf")
+	ltcdConfigFile, err := os.Open(ltcdConfigPath)
 	if err != nil {
 		return err
 	}
-	defer btcdConfigFile.Close()
-	content, err := ioutil.ReadAll(btcdConfigFile)
+	defer ltcdConfigFile.Close()
+	content, err := ioutil.ReadAll(ltcdConfigFile)
 	if err != nil {
 		return err
 	}

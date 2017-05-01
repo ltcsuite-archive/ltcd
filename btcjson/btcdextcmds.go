@@ -4,7 +4,7 @@
 // license that can be found in the LICENSE file.
 
 // NOTE: This file is intended to house the RPC commands that are supported by
-// a chain server with btcd extensions.
+// a chain server with ltcd extensions.
 
 package btcjson
 
@@ -45,14 +45,14 @@ func NewNodeCmd(subCmd NodeSubCmd, target string, connectSubCmd *string) *NodeCm
 }
 
 // DebugLevelCmd defines the debuglevel JSON-RPC command.  This command is not a
-// standard Bitcoin command.  It is an extension for btcd.
+// standard Bitcoin command.  It is an extension for ltcd.
 type DebugLevelCmd struct {
 	LevelSpec string
 }
 
 // NewDebugLevelCmd returns a new DebugLevelCmd which can be used to issue a
 // debuglevel JSON-RPC command.  This command is not a standard Bitcoin command.
-// It is an extension for btcd.
+// It is an extension for ltcd.
 func NewDebugLevelCmd(levelSpec string) *DebugLevelCmd {
 	return &DebugLevelCmd{
 		LevelSpec: levelSpec,

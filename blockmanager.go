@@ -14,13 +14,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/mempool"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/chaincfg"
+	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/ltcsuite/ltcd/database"
+	"github.com/ltcsuite/ltcd/mempool"
+	"github.com/ltcsuite/ltcd/wire"
+	"github.com/ltcsuite/ltcutil"
 )
 
 const (
@@ -930,13 +930,6 @@ func (b *blockManager) handleInvMsg(imsg *invMsg) {
 		}
 	}
 
-	// Ignore invs from non-witness enabled peers, as after segwit
-	// activation we only want to download from peers that can provide us
-	// full witness data.
-	if !imsg.peer.witnessEnabled {
-		return
-	}
-
 	// Request the advertised inventory if we don't already have it.  Also,
 	// request parent blocks of orphans if we receive one we already have.
 	// Finally, attempt to detect potential stalls due to long side chains
@@ -1520,7 +1513,7 @@ func removeRegressionDB(dbPath string) error {
 	// Remove the old regression test database if it already exists.
 	fi, err := os.Stat(dbPath)
 	if err == nil {
-		btcdLog.Infof("Removing regression test database from '%s'", dbPath)
+		ltcdLog.Infof("Removing regression test database from '%s'", dbPath)
 		if fi.IsDir() {
 			err := os.RemoveAll(dbPath)
 			if err != nil {
@@ -1572,7 +1565,7 @@ func warnMultipeDBs() {
 	// Warn if there are extra databases.
 	if len(duplicateDbPaths) > 0 {
 		selectedDbPath := blockDbPath(cfg.DbType)
-		btcdLog.Warnf("WARNING: There are multiple block chain databases "+
+		ltcdLog.Warnf("WARNING: There are multiple block chain databases "+
 			"using different database types.\nYou probably don't "+
 			"want to waste disk space by having more than one.\n"+
 			"Your current database is located at [%v].\nThe "+
@@ -1591,7 +1584,7 @@ func loadBlockDB() (database.DB, error) {
 	// handle it uniquely.  We also don't want to worry about the multiple
 	// database type warnings when running with the memory database.
 	if cfg.DbType == "memdb" {
-		btcdLog.Infof("Creating block database in memory.")
+		ltcdLog.Infof("Creating block database in memory.")
 		db, err := database.Create(cfg.DbType)
 		if err != nil {
 			return nil, err
@@ -1608,7 +1601,7 @@ func loadBlockDB() (database.DB, error) {
 	// each run, so remove it now if it already exists.
 	removeRegressionDB(dbPath)
 
-	btcdLog.Infof("Loading block database from '%s'", dbPath)
+	ltcdLog.Infof("Loading block database from '%s'", dbPath)
 	db, err := database.Open(cfg.DbType, dbPath, activeNetParams.Net)
 	if err != nil {
 		// Return the error if it's not because the database doesn't
@@ -1630,6 +1623,6 @@ func loadBlockDB() (database.DB, error) {
 		}
 	}
 
-	btcdLog.Info("Block database loaded")
+	ltcdLog.Info("Block database loaded")
 	return db, nil
 }

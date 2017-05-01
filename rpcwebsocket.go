@@ -20,13 +20,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/btcjson"
+	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/ltcsuite/ltcd/database"
+	"github.com/ltcsuite/ltcd/txscript"
+	"github.com/ltcsuite/ltcd/wire"
+	"github.com/ltcsuite/ltcutil"
 	"github.com/btcsuite/golangcrypto/ripemd160"
 	"github.com/btcsuite/websocket"
 )
@@ -2594,7 +2594,7 @@ fetchRange:
 		minBlock += int32(len(hashList))
 	}
 
-	// Notify websocket client of the finished rescan.  Due to how btcd
+	// Notify websocket client of the finished rescan.  Due to how ltcd
 	// asynchronously queues notifications to not block calling code,
 	// there is no guarantee that any of the notifications created during
 	// rescan (such as rescanprogress, recvtx and redeemingtx) will be

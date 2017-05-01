@@ -10,15 +10,15 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/btcec"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/btcec"
+	"github.com/ltcsuite/ltcd/chaincfg"
+	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/ltcsuite/ltcd/txscript"
+	"github.com/ltcsuite/ltcd/wire"
 	"github.com/btcsuite/btcrpcclient"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/hdkeychain"
+	"github.com/ltcsuite/ltcutil"
+	"github.com/ltcsuite/ltcutil/hdkeychain"
 )
 
 var (
@@ -169,7 +169,7 @@ func (m *memWallet) SyncedHeight() int32 {
 	return m.currentHeight
 }
 
-// SetRPCClient saves the passed rpc connection to btcd as the wallet's
+// SetRPCClient saves the passed rpc connection to ltcd as the wallet's
 // personal rpc connection.
 func (m *memWallet) SetRPCClient(rpcClient *btcrpcclient.Client) {
 	m.rpc = rpcClient

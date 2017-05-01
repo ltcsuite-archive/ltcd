@@ -8,18 +8,18 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/btcsuite/btcd/addrmgr"
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/blockchain/indexers"
-	"github.com/btcsuite/btcd/connmgr"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/mempool"
-	"github.com/btcsuite/btcd/mining"
-	"github.com/btcsuite/btcd/mining/cpuminer"
-	"github.com/btcsuite/btcd/peer"
-	"github.com/btcsuite/btcd/txscript"
 	"github.com/btcsuite/btclog"
 	"github.com/btcsuite/seelog"
+	"github.com/ltcsuite/ltcd/addrmgr"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/blockchain/indexers"
+	"github.com/ltcsuite/ltcd/connmgr"
+	"github.com/ltcsuite/ltcd/database"
+	"github.com/ltcsuite/ltcd/mempool"
+	"github.com/ltcsuite/ltcd/mining"
+	"github.com/ltcsuite/ltcd/mining/cpuminer"
+	"github.com/ltcsuite/ltcd/peer"
+	"github.com/ltcsuite/ltcd/txscript"
 )
 
 // Loggers per subsystem.  Note that backendLog is a seelog logger that all of
@@ -33,7 +33,7 @@ var (
 	cmgrLog    = btclog.Disabled
 	bcdbLog    = btclog.Disabled
 	bmgrLog    = btclog.Disabled
-	btcdLog    = btclog.Disabled
+	ltcdLog    = btclog.Disabled
 	chanLog    = btclog.Disabled
 	discLog    = btclog.Disabled
 	indxLog    = btclog.Disabled
@@ -52,7 +52,7 @@ var subsystemLoggers = map[string]btclog.Logger{
 	"CMGR": cmgrLog,
 	"BCDB": bcdbLog,
 	"BMGR": bmgrLog,
-	"BTCD": btcdLog,
+	"LTCD": ltcdLog,
 	"CHAN": chanLog,
 	"DISC": discLog,
 	"INDX": indxLog,
@@ -91,8 +91,8 @@ func useLogger(subsystemID string, logger btclog.Logger) {
 	case "BMGR":
 		bmgrLog = logger
 
-	case "BTCD":
-		btcdLog = logger
+	case "LTCD":
+		ltcdLog = logger
 
 	case "CHAN":
 		chanLog = logger

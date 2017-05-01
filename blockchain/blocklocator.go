@@ -5,9 +5,9 @@
 package blockchain
 
 import (
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/ltcsuite/ltcd/database"
+	"github.com/ltcsuite/ltcd/wire"
 )
 
 // BlockLocator is used to help locate a specific block.  The algorithm for

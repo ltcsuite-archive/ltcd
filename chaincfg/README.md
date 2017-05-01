@@ -1,17 +1,17 @@
 chaincfg
 ========
 
-[![Build Status](http://img.shields.io/travis/btcsuite/btcd.svg)]
-(https://travis-ci.org/btcsuite/btcd) [![ISC License]
+[![Build Status](http://img.shields.io/travis/ltcsuite/ltcd.svg)]
+(https://travis-ci.org/ltcsuite/ltcd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/btcsuite/btcd/chaincfg)
+(http://godoc.org/github.com/ltcsuite/ltcd/chaincfg)
 
 Package chaincfg defines chain configuration parameters for the three standard
 Bitcoin networks and provides the ability for callers to define their own custom
 Bitcoin networks.
 
-Although this package was primarily written for btcd, it has intentionally been
+Although this package was primarily written for ltcd, it has intentionally been
 designed so it can be used as a standalone package for any projects needing to
 use parameters for the standard Bitcoin networks or for projects needing to
 define their own network.
@@ -26,8 +26,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/ltcsuite/ltcutil"
+	"github.com/ltcsuite/ltcd/chaincfg"
 )
 
 var testnet = flag.Bool("testnet", false, "operate on the testnet Bitcoin network")
@@ -58,7 +58,7 @@ func main() {
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/btcsuite/btcd/chaincfg
+$ go get -u github.com/ltcsuite/ltcd/chaincfg
 ```
 
 ## GPG Verification Key

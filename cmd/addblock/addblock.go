@@ -9,15 +9,15 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/blockchain/indexers"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/limits"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/blockchain/indexers"
+	"github.com/ltcsuite/ltcd/database"
+	"github.com/ltcsuite/ltcd/limits"
 	"github.com/btcsuite/btclog"
 )
 
 const (
-	// blockDbNamePrefix is the prefix for the btcd block database.
+	// blockDbNamePrefix is the prefix for the ltcd block database.
 	blockDbNamePrefix = "blocks"
 )
 

@@ -1,5 +1,5 @@
 ============================================================================
-User visible changes for btcd
+User visible changes for ltcd
   A full-node bitcoin implementation written in Go
 ============================================================================
 
@@ -264,7 +264,7 @@ Changes in 0.10.0 (Sun Mar 01 2015)
       for version 3 blocks which are compatible with BIP0066
     - Allow getblocktemplate to serve blocks when the current time is
       less than the minimum allowed time for a generated block template
-      (https://github.com/btcsuite/btcd/issues/209)
+      (https://github.com/ltcsuite/ltcd/issues/209)
   - Crypto changes:
     - Optimize scalar multiplication by the base point by using a
       pre-computed table which results in approximately a 35% speedup
@@ -279,29 +279,29 @@ Changes in 0.10.0 (Sun Mar 01 2015)
     - Add a new parameter --addrindex which will enable the creation of an
       address index which can be queried to determine all transactions which
       involve a given address
-      (https://github.com/btcsuite/btcd/issues/190)
+      (https://github.com/ltcsuite/ltcd/issues/190)
     - Add a new logging subsystem for address index related operations
     - Support new searchrawtransactions RPC
-      (https://github.com/btcsuite/btcd/issues/185)
+      (https://github.com/ltcsuite/ltcd/issues/185)
   - RPC changes:
     - Require TLS version 1.2 as the minimum version for all TLS connections
     - Provide support for disabling TLS when only listening on localhost
-      (https://github.com/btcsuite/btcd/pull/192)
+      (https://github.com/ltcsuite/ltcd/pull/192)
     - Modify help output for all commands to provide much more consistent
       and detailed information
     - Correct case in getrawtransaction which would refuse to serve certain
       transactions with invalid scripts
-      (https://github.com/btcsuite/btcd/issues/210)
+      (https://github.com/ltcsuite/ltcd/issues/210)
     - Correct error handling in the getrawtransaction RPC which could lead
       to a crash in rare cases
-      (https://github.com/btcsuite/btcd/issues/196)
+      (https://github.com/ltcsuite/ltcd/issues/196)
     - Update getinfo RPC to include the appropriate 'timeoffset' calculated
       from the median network time
     - Modify listreceivedbyaddress result type to include txids field so it
       is compatible
     - Add 'iswatchonly' field to validateaddress result
     - Add 'startingpriority' and 'currentpriority' fields to getrawmempool
-      (https://github.com/btcsuite/btcd/issues/178)
+      (https://github.com/ltcsuite/ltcd/issues/178)
     - Don't omit the 'confirmations' field from getrawtransaction when it is
       zero
   - Websocket changes:
@@ -317,7 +317,7 @@ Changes in 0.10.0 (Sun Mar 01 2015)
       dumping all of the commands
     - Make the usage syntax much more consistent and correct a few cases of
       misnamed fields
-      (https://github.com/btcsuite/btcd/issues/305)
+      (https://github.com/ltcsuite/ltcd/issues/305)
     - Improve usage errors to show the specific parameter number, reason,
       and error code
     - Only show the usage for specific command is shown when a valid command
@@ -335,8 +335,8 @@ Changes in 0.10.0 (Sun Mar 01 2015)
   - showblock utility changes:
     - Remove utility in favor of the RPC getblock method
   - Notable developer-related package changes:
-    - Many of the core packages have been relocated into the btcd repository
-      (https://github.com/btcsuite/btcd/issues/214)
+    - Many of the core packages have been relocated into the ltcd repository
+      (https://github.com/ltcsuite/ltcd/issues/214)
     - A new version of the btcjson package that has been completely
       redesigned from the ground up based based upon how the project has
       evolved and lessons learned while using it since it was first written
@@ -353,21 +353,21 @@ Changes in 0.10.0 (Sun Mar 01 2015)
       and using that data to calculate an offset against the local time
   - Misc changes:
     - Fix a slow memory leak due to tickers not being stopped
-      (https://github.com/btcsuite/btcd/issues/189)
+      (https://github.com/ltcsuite/ltcd/issues/189)
     - Fix an issue where a mix of orphans and SPV clients could trigger a
       condition where peers would no longer be served
-      (https://github.com/btcsuite/btcd/issues/231)
+      (https://github.com/ltcsuite/ltcd/issues/231)
     - The RPC username and password can now contain symbols which previously
       conflicted with special symbols used in URLs
     - Improve handling of obtaining random nonces to prevent cases where it
       could error when not enough entropy was available
     - Improve handling of home directory creation errors such as in the case
-      of unmounted symlinks (https://github.com/btcsuite/btcd/issues/193)
+      of unmounted symlinks (https://github.com/ltcsuite/ltcd/issues/193)
     - Improve the error reporting for rejected transactions to include the
       inputs which are missing and/or being double spent
     - Update sample config file with new options and correct a comment
       regarding the fact the RPC server only listens on localhost by default
-      (https://github.com/btcsuite/btcd/issues/218)
+      (https://github.com/ltcsuite/ltcd/issues/218)
     - Update the continuous integration builds to run several tools which
       help keep code quality high
     - Significant amount of internal code cleanup and improvements
@@ -393,14 +393,14 @@ Changes in 0.9.0 (Sat Sep 20 2014)
   - Protocol and network related changes:
     - Add a new checkpoint at block height 319400
     - Add support for BIP0037 bloom filters
-      (https://github.com/conformal/btcd/issues/132)
+      (https://github.com/conformal/ltcd/issues/132)
     - Implement BIP0061 reject handling and hence support for protocol
-      version 70002 (https://github.com/conformal/btcd/issues/133)
+      version 70002 (https://github.com/conformal/ltcd/issues/133)
     - Add testnet DNS seeds for peer discovery (testnet-seed.alexykot.me
       and testnet-seed.bitcoin.schildbach.de)
     - Add mainnet DNS seed for peer discovery (seeds.bitcoin.open-nodes.org)
     - Make multisig transactions with non-null dummy data nonstandard
-      (https://github.com/conformal/btcd/issues/131)
+      (https://github.com/conformal/ltcd/issues/131)
     - Make transactions with an excessive number of signature operations
       nonstandard
     - Perform initial DNS lookups concurrently which allows connections
@@ -408,14 +408,14 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Improve the address manager to significantly reduce memory usage and
       add tests
     - Remove orphan transactions when they appear in a mined block
-      (https://github.com/conformal/btcd/issues/166)
+      (https://github.com/conformal/ltcd/issues/166)
     - Apply incremental back off on connection retries for persistent peers
       that give invalid replies to mirror the logic used for failed
-      connections (https://github.com/conformal/btcd/issues/103)
+      connections (https://github.com/conformal/ltcd/issues/103)
     - Correct rate-limiting of free and low-fee transactions
   - Mining support changes:
     - Implement getblocktemplate RPC with the following support:
-      (https://github.com/conformal/btcd/issues/124)
+      (https://github.com/conformal/ltcd/issues/124)
       - BIP0022 Non-Optional Sections
       - BIP0022 Long Polling
       - BIP0023 Basic Pool Extensions
@@ -425,7 +425,7 @@ Changes in 0.9.0 (Sat Sep 20 2014)
       - BIP0023 Mutations prevblock, coinbase, and generation
       - BIP0023 Block Proposals
     - Implement built-in concurrent CPU miner
-      (https://github.com/conformal/btcd/issues/137)
+      (https://github.com/conformal/ltcd/issues/137)
       NOTE: CPU mining on mainnet is pointless.  This has been provided
       for testing purposes such as for the new simulation test network
     - Add --generate flag to enable CPU mining
@@ -434,7 +434,7 @@ Changes in 0.9.0 (Sat Sep 20 2014)
       the subsidy to
   - RPC changes:
     - Implement gettxout command
-      (https://github.com/conformal/btcd/issues/141)
+      (https://github.com/conformal/ltcd/issues/141)
     - Implement validateaddress command
     - Implement verifymessage command
     - Mark getunconfirmedbalance RPC as wallet-only
@@ -447,13 +447,13 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Make error code returns for invalid hex more consistent
   - Websocket changes:
     - Switch to a new more efficient websocket package
-      (https://github.com/conformal/btcd/issues/134)
+      (https://github.com/conformal/ltcd/issues/134)
     - Add rescanfinished notification
     - Modify the rescanprogress notification to include block hash as well
-      as height (https://github.com/conformal/btcd/issues/151)
+      as height (https://github.com/conformal/ltcd/issues/151)
   - btcctl utility changes:
     - Accept --simnet flag which automatically selects the appropriate port
-      and TLS certificates needed to communicate with btcd and btcwallet on
+      and TLS certificates needed to communicate with ltcd and btcwallet on
       the simulation test network
     - Fix createrawtransaction command to send amounts denominated in BTC
     - Add estimatefee command
@@ -465,7 +465,7 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Add signrawtransaction command
   - addblock utility changes:
     - Accept --simnet flag which automatically selects the appropriate port
-      and TLS certificates needed to communicate with btcd and btcwallet on
+      and TLS certificates needed to communicate with ltcd and btcwallet on
       the simulation test network
   - Notable developer-related package changes:
     - Provide a new bloom package in btcutil which allows creating and
@@ -476,8 +476,8 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Provide new simnet network (--simnet) which is useful for private
       simulation testing
     - Enforce low S values in serialized signatures as detailed in BIP0062
-    - Return errors from all methods on the btcdb.Db interface
-      (https://github.com/conformal/btcdb/issues/5)
+    - Return errors from all methods on the ltcdb.Db interface
+      (https://github.com/conformal/ltcdb/issues/5)
     - Allow behavior flags to alter btcchain.ProcessBlock
       (https://github.com/conformal/btcchain/issues/5)
     - Provide a new SerializeSize API for blocks
@@ -492,7 +492,7 @@ Changes in 0.9.0 (Sat Sep 20 2014)
       shutdown
     - Update sample config file so the comments are on a separate line
       rather than the end of a line so they are not interpreted as settings
-      (https://github.com/conformal/btcd/issues/135)
+      (https://github.com/conformal/ltcd/issues/135)
     - Correct an issue where getdata requests were not being properly
       throttled which could lead to larger than necessary memory usage
     - Always show help when given the help flag even when the config file
@@ -500,16 +500,16 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - General code cleanup and minor optimizations
 
 Changes in 0.8.0-beta (Sun May 25 2014)
-  - Btcd is now Beta (https://github.com/conformal/btcd/issues/130)
+  - Btcd is now Beta (https://github.com/conformal/ltcd/issues/130)
   - Add a new checkpoint at block height 300255
   - Protocol and network related changes:
     - Lower the minimum transaction relay fee to 1000 satoshi to match
       recent reference client changes
-      (https://github.com/conformal/btcd/issues/100)
+      (https://github.com/conformal/ltcd/issues/100)
     - Raise the maximum signature script size to support standard 15-of-15
       multi-signature pay-to-sript-hash transactions with compressed pubkeys
       to remain compatible with the reference client
-      (https://github.com/conformal/btcd/issues/128)
+      (https://github.com/conformal/ltcd/issues/128)
     - Reduce max bytes allowed for a standard nulldata transaction to 40 for
       compatibility with the reference client
     - Introduce a new btcnet package which houses all of the network params
@@ -521,7 +521,7 @@ Changes in 0.8.0-beta (Sun May 25 2014)
     - Reduce the max known inventory cache from 20000 items to 1000 items
     - Fix an issue where unknown inventory types could lead to a hung peer
     - Implement inventory rebroadcast handler for sendrawtransaction
-      (https://github.com/conformal/btcd/issues/99)
+      (https://github.com/conformal/ltcd/issues/99)
     - Update user agent to fully support BIP0014
       (https://github.com/conformal/btcwire/issues/10)
   - Implement initial mining support:
@@ -534,24 +534,24 @@ Changes in 0.8.0-beta (Sun May 25 2014)
       identifier
   - RPC changes:
     - Set the content type for HTTP POST RPC connections to application/json
-      (https://github.com/conformal/btcd/issues/121)
+      (https://github.com/conformal/ltcd/issues/121)
     - Modified the RPC server startup so it only requires at least one valid
       listen interface
     - Correct an error path where it was possible certain errors would not
       be returned
     - Implement getwork command
-      (https://github.com/conformal/btcd/issues/125)
+      (https://github.com/conformal/ltcd/issues/125)
     - Update sendrawtransaction command to reject orphans
     - Update sendrawtransaction command to include the reason a transaction
       was rejected
     - Update getinfo command to populate connection count field
     - Update getinfo command to include relay fee field
-      (https://github.com/conformal/btcd/issues/107)
+      (https://github.com/conformal/ltcd/issues/107)
     - Allow transactions submitted with sendrawtransaction to bypass the
       rate limiter
     - Allow the getcurrentnet and getbestblock extensions to be accessed via
       HTTP POST in addition to Websockets
-      (https://github.com/conformal/btcd/issues/127)
+      (https://github.com/conformal/ltcd/issues/127)
   - Websocket changes:
     - Rework notifications to ensure they are delivered in the order they
       occur
@@ -559,12 +559,12 @@ Changes in 0.8.0-beta (Sun May 25 2014)
     - Rename notifyallnewtxs command to notifynewtransactions
     - Rename alltx notification to txaccepted
     - Rename allverbosetx notification to txacceptedverbose
-      (https://github.com/conformal/btcd/issues/98)
+      (https://github.com/conformal/ltcd/issues/98)
     - Add rescan progress notification
     - Add recvtx notification
     - Add redeemingtx notification
     - Modify notifyspent command to accept an array of outpoints
-      (https://github.com/conformal/btcd/issues/123)
+      (https://github.com/conformal/ltcd/issues/123)
     - Significantly optimize the rescan command to yield up to a 60x speed
       increase
   - btcctl utility changes:
@@ -575,13 +575,13 @@ Changes in 0.8.0-beta (Sun May 25 2014)
     - Add setgenerate command
     - Accept --testnet and --wallet flags which automatically select
       the appropriate port and TLS certificates needed to communicate
-      with btcd and btcwallet (https://github.com/conformal/btcd/issues/112)
+      with ltcd and btcwallet (https://github.com/conformal/ltcd/issues/112)
     - Allow path expansion from config file entries
-      (https://github.com/conformal/btcd/issues/113)
+      (https://github.com/conformal/ltcd/issues/113)
     - Minor refactor simplify handling of options
   - addblock utility changes:
     - Improve logging by making it consistent with the logging provided by
-      btcd (https://github.com/conformal/btcd/issues/90)
+      ltcd (https://github.com/conformal/ltcd/issues/90)
   - Improve several package APIs for developers:
     - Add new amount type for consistently handling monetary values
     - Add new coin selector API
@@ -594,9 +594,9 @@ Changes in 0.8.0-beta (Sun May 25 2014)
   - Misc changes:
     - Optimize address manager shuffling to do 67% less work on average
     - Resolve a couple of benign data races found by the race detector
-      (https://github.com/conformal/btcd/issues/101)
+      (https://github.com/conformal/ltcd/issues/101)
     - Add IP address to all peer related errors to clarify which peer is the
-      cause (https://github.com/conformal/btcd/issues/102)
+      cause (https://github.com/conformal/ltcd/issues/102)
     - Fix a UPNP case issue that prevented the --upnp option from working
       with some UPNP servers
     - Update documentation in the sample config file regarding debug levels
@@ -628,7 +628,7 @@ Changes in 0.7.0 (Thu Feb 20 2014)
     - Provide a --rpcmaxwebsockets option to allow limiting the number of
       concurrent websocket clients
     - Add a new websocket command notifyallnewtxs to request notifications
-      (https://github.com/conformal/btcd/issues/86) (thanks @flammit)
+      (https://github.com/conformal/ltcd/issues/86) (thanks @flammit)
   - Improve btcctl utility in the following ways:
     - Add getnetworkhashps command
     - Add gettransaction command (wallet-specific)
@@ -636,22 +636,22 @@ Changes in 0.7.0 (Thu Feb 20 2014)
     - Update getwork command to accept
   - Continue cleanup and work on implementing the RPC API:
     - Implement getnettotals command
-      (https://github.com/conformal/btcd/issues/84)
+      (https://github.com/conformal/ltcd/issues/84)
     - Implement networkhashps command
-      (https://github.com/conformal/btcd/issues/87)
+      (https://github.com/conformal/ltcd/issues/87)
     - Update getpeerinfo to always include syncnode field even when false
     - Remove help addenda for getpeerinfo now that it supports all fields
   - Close standard RPC connections on auth failure
   - Provide a --rpcmaxclients option to allow limiting the number of
-    concurrent RPC clients (https://github.com/conformal/btcd/issues/68)
+    concurrent RPC clients (https://github.com/conformal/ltcd/issues/68)
   - Include IP address in RPC auth failure log messages
   - Resolve a rather harmless data races found by the race detector
-    (https://github.com/conformal/btcd/issues/94)
+    (https://github.com/conformal/ltcd/issues/94)
   - Increase block priority size and max standard transaction size to 50k
-    and 100k, respectively (https://github.com/conformal/btcd/issues/71)
+    and 100k, respectively (https://github.com/conformal/ltcd/issues/71)
   - Add rate limiting of free transactions to the memory pool to prevent
-    penny flooding (https://github.com/conformal/btcd/issues/40)
-  - Provide a --logdir option (https://github.com/conformal/btcd/issues/95)
+    penny flooding (https://github.com/conformal/ltcd/issues/40)
+  - Provide a --logdir option (https://github.com/conformal/ltcd/issues/95)
   - Change the default log file path to include the network
   - Add a new ScriptBuilder interface to btcscript to support creation of
     custom scripts (https://github.com/conformal/btcscript/issues/5)
@@ -676,7 +676,7 @@ Changes in 0.6.0 (Tue Feb 04 2014)
   - Rework, optimize, and improve headers-first mode:
     - Resuming the chain sync from any point before the final checkpoint
       will now use headers-first mode
-      (https://github.com/conformal/btcd/issues/69)
+      (https://github.com/conformal/ltcd/issues/69)
     - Verify all checkpoints as opposed to only the final one
     - Reduce and bound memory usage
     - Rollback to the last known good point when a header does not match a
@@ -708,22 +708,22 @@ Changes in 0.6.0 (Tue Feb 04 2014)
     - Add sendtoaddress command (wallet-specific)
   - Continue cleanup and work on implementing the RPC API:
     - Implement submitblock command
-      (https://github.com/conformal/btcd/issues/61)
+      (https://github.com/conformal/ltcd/issues/61)
     - Implement help command
     - Implement ping command
     - Implement getaddednodeinfo command
-      (https://github.com/conformal/btcd/issues/78)
+      (https://github.com/conformal/ltcd/issues/78)
     - Implement getinfo command
     - Update getpeerinfo to support bytesrecv and bytessent
-      (https://github.com/conformal/btcd/issues/83)
+      (https://github.com/conformal/ltcd/issues/83)
   - Improve and correct several RPC server and websocket areas:
     - Change the connection endpoint for websockets from /wallet to /ws
-      (https://github.com/conformal/btcd/issues/80)
+      (https://github.com/conformal/ltcd/issues/80)
     - Implement an alternative authentication for websockets so clients
       such as javascript from browsers that don't support setting HTTP
-      headers can authenticate (https://github.com/conformal/btcd/issues/77)
+      headers can authenticate (https://github.com/conformal/ltcd/issues/77)
     - Add an authentication deadline for RPC connections
-      (https://github.com/conformal/btcd/issues/68)
+      (https://github.com/conformal/ltcd/issues/68)
     - Use standard authentication failure responses for RPC connections
     - Make automatically generated certificate more standard so it works
       from client such as node.js and Firefox
@@ -738,7 +738,7 @@ Changes in 0.6.0 (Tue Feb 04 2014)
     which prevented a minedtx notification from being added
   - Rescan operations issued from remote wallets are no stopped when
     the wallet disconnects mid-operation
-    (https://github.com/conformal/btcd/issues/66)
+    (https://github.com/conformal/ltcd/issues/66)
   - Several optimizations related to fetching block information from the
     database
   - General code cleanup
@@ -748,14 +748,14 @@ Changes in 0.5.0 (Mon Jan 13 2014)
     downloads the block headers first (up to the final checkpoint)
   - Improve peer handling to remove the potential for slow peers to cause
     sluggishness amongst all peers
-    (https://github.com/conformal/btcd/issues/63)
+    (https://github.com/conformal/ltcd/issues/63)
   - Fix an issue where the initial block sync could stall when the sync peer
-    disconnects (https://github.com/conformal/btcd/issues/62)
+    disconnects (https://github.com/conformal/ltcd/issues/62)
   - Correct an issue where --externalip was doing a DNS lookup on the full
     host:port instead of just the host portion
-    (https://github.com/conformal/btcd/issues/38)
+    (https://github.com/conformal/ltcd/issues/38)
   - Fix an issue which could lead to a panic on chain switches
-    (https://github.com/conformal/btcd/issues/70)
+    (https://github.com/conformal/ltcd/issues/70)
   - Improve btcctl utility in the following ways:
     - Show getdifficulty output as floating point to 6 digits of precision
     - Show all JSON object replies formatted as standard JSON
@@ -781,24 +781,24 @@ Changes in 0.5.0 (Mon Jan 13 2014)
       legacy connection
   - Add new DNS seed for peer discovery
   - Display user agent on new valid peer log message
-    (https://github.com/conformal/btcd/issues/64)
+    (https://github.com/conformal/ltcd/issues/64)
   - Notify wallet when new transactions that pay to registered addresses
     show up in the mempool before being mined into a block
   - Support a tor-specific proxy in addition to a normal proxy
-    (https://github.com/conformal/btcd/issues/47)
+    (https://github.com/conformal/ltcd/issues/47)
   - Remove deprecated sqlite3 imports from utilities
   - Remove leftover profile write from addblock utility
   - Quite a bit of code cleanup and refactoring to improve maintainability
 
 Changes in 0.4.0 (Thu Dec 12 2013)
   - Allow listen interfaces to be specified via --listen instead of only the
-    port (https://github.com/conformal/btcd/issues/33)
+    port (https://github.com/conformal/ltcd/issues/33)
   - Allow listen interfaces for the RPC server to be specified via
     --rpclisten instead of only the port
-    (https://github.com/conformal/btcd/issues/34)
+    (https://github.com/conformal/ltcd/issues/34)
   - Only disable listening when --connect or --proxy are used when no
     --listen interface are specified
-    (https://github.com/conformal/btcd/issues/10)
+    (https://github.com/conformal/ltcd/issues/10)
   - Add several new standard transaction checks to transaction memory pool:
     - Support nulldata scripts as standard
     - Only allow a max of one nulldata output per transaction
@@ -823,34 +823,34 @@ Changes in 0.4.0 (Thu Dec 12 2013)
   - Implement TLS support for RPC including automatic certificate generation
   - Support HTTP authentication headers for web sockets
   - Update address manager to recognize and properly work with Tor
-    addresses (https://github.com/conformal/btcd/issues/36) and
-    (https://github.com/conformal/btcd/issues/37)
+    addresses (https://github.com/conformal/ltcd/issues/36) and
+    (https://github.com/conformal/ltcd/issues/37)
   - Improve btcctl utility in the following ways:
     - Add the ability to specify a configuration file
     - Add a default entry for the RPC cert to point to the location
-      it will likely be in the btcd home directory
+      it will likely be in the ltcd home directory
     - Implement --version flag
     - Provide a --notls option to support non-TLS configurations
   - Fix a couple of minor races found by the Go race detector
   - Improve logging
     - Allow logging level to be specified on a per subsystem basis
-      (https://github.com/conformal/btcd/issues/48)
+      (https://github.com/conformal/ltcd/issues/48)
     - Allow logging levels to be dynamically changed via RPC
-      (https://github.com/conformal/btcd/issues/15)
+      (https://github.com/conformal/ltcd/issues/15)
     - Implement a rolling log file with a max of 10MB per file and a
       rotation size of 3 which results in a max logging size of 30 MB
   - Correct a minor issue with the rescanning websocket call
-    (https://github.com/conformal/btcd/issues/54)
+    (https://github.com/conformal/ltcd/issues/54)
   - Fix a race with pushing address messages that could lead to a panic
-    (https://github.com/conformal/btcd/issues/58)
+    (https://github.com/conformal/ltcd/issues/58)
   - Improve which external IP address is reported to peers based on which
     interface they are connected through
-    (https://github.com/conformal/btcd/issues/35)
+    (https://github.com/conformal/ltcd/issues/35)
   - Add --externalip option to allow an external IP address to be specified
     for cases such as tor hidden services or advanced network configurations
-    (https://github.com/conformal/btcd/issues/38)
+    (https://github.com/conformal/ltcd/issues/38)
   - Add --upnp option to support automatic port mapping via UPnP
-    (https://github.com/conformal/btcd/issues/51)
+    (https://github.com/conformal/ltcd/issues/51)
   - Update Ctrl+C interrupt handler to properly sync address manager and
     remove the UPnP port mapping (if needed)
   - Continue cleanup and work on implementing RPC API calls
@@ -861,8 +861,8 @@ Changes in 0.4.0 (Thu Dec 12 2013)
     - Update getblock with new verbose flag (thanks @flammit)
     - Add listtransactions command to btcctl
     - Add getbalance command to btcctl
-  - Add basic support for btcd to run as a native Windows service
-    (https://github.com/conformal/btcd/issues/42)
+  - Add basic support for ltcd to run as a native Windows service
+    (https://github.com/conformal/ltcd/issues/42)
   - Package addblock utility with Windows MSIs
   - Add support for TravisCI (continuous build integration)
   - Cleanup some documentation and usage
@@ -870,20 +870,20 @@ Changes in 0.4.0 (Thu Dec 12 2013)
 
 Changes in 0.3.3 (Wed Nov 13 2013)
   - Significantly improve initial block chain download speed
-    (https://github.com/conformal/btcd/issues/20)
+    (https://github.com/conformal/ltcd/issues/20)
   - Add a new checkpoint at block height 267300
   - Optimize most recently used inventory handling
-    (https://github.com/conformal/btcd/issues/21)
+    (https://github.com/conformal/ltcd/issues/21)
   - Optimize duplicate transaction input check
     (https://github.com/conformal/btcchain/issues/2)
   - Optimize transaction hashing
-    (https://github.com/conformal/btcd/issues/25)
+    (https://github.com/conformal/ltcd/issues/25)
   - Rework and optimize wallet listener notifications
-    (https://github.com/conformal/btcd/issues/22)
+    (https://github.com/conformal/ltcd/issues/22)
   - Optimize serialization and deserialization
-    (https://github.com/conformal/btcd/issues/27)
+    (https://github.com/conformal/ltcd/issues/27)
   - Add support for minimum transaction fee to memory pool acceptance
-    (https://github.com/conformal/btcd/issues/29)
+    (https://github.com/conformal/ltcd/issues/29)
   - Improve leveldb database performance by removing explicit GC call
   - Fix an issue where Ctrl+C was not always finishing orderly database
     shutdown
@@ -894,14 +894,14 @@ Changes in 0.3.3 (Wed Nov 13 2013)
   - Separate the debug profile http server from the RPC server
   - Rework of the RPC code to improve performance and make the code cleaner
   - The getrawtransaction RPC call now properly checks the memory pool
-    before consulting the db (https://github.com/conformal/btcd/issues/26)
+    before consulting the db (https://github.com/conformal/ltcd/issues/26)
   - Add support for the following RPC calls: getpeerinfo, getconnectedcount,
     addnode, verifychain
-    (https://github.com/conformal/btcd/issues/13)
-    (https://github.com/conformal/btcd/issues/17)
+    (https://github.com/conformal/ltcd/issues/13)
+    (https://github.com/conformal/ltcd/issues/17)
   - Implement rescan websocket extension to allow wallet rescans
   - Use correct paths for application data storage for all supported
-    operating systems (https://github.com/conformal/btcd/issues/30)
+    operating systems (https://github.com/conformal/ltcd/issues/30)
   - Add a default redirect to the http profiling page when accessing the
     http profile server
   - Add a new --cpuprofile option which can be used to generate CPU
@@ -911,24 +911,24 @@ Changes in 0.3.3 (Wed Nov 13 2013)
 
 Changes in 0.3.2 (Tue Oct 22 2013)
   - Fix an issue that could cause the download of the block chain to stall
-    (https://github.com/conformal/btcd/issues/12)
+    (https://github.com/conformal/ltcd/issues/12)
   - Remove deprecated sqlite as an available database backend
   - Close sqlite compile issue as sqlite has now been removed
-    (https://github.com/conformal/btcd/issues/11)
+    (https://github.com/conformal/ltcd/issues/11)
   - Change default RPC ports to 8334 (mainnet) and 18334 (testnet)
   - Continue cleanup and work on implementing RPC API calls
   - Add support for the following RPC calls: getrawmempool,
     getbestblockhash, decoderawtransaction, getdifficulty,
     getconnectioncount, getpeerinfo, and addnode
   - Improve the btcctl utility that is used to issue JSON-RPC commands
-  - Fix an issue preventing btcd from cleanly shutting down with the RPC
+  - Fix an issue preventing ltcd from cleanly shutting down with the RPC
     stop command
   - Add a number of database interface tests to ensure backends implement
     the expected interface
   - Expose some additional information from btcscript to be used for
     identifying "standard"" transactions
   - Add support for plan9 - thanks @mischief
-    (https://github.com/conformal/btcd/pull/19)
+    (https://github.com/conformal/ltcd/pull/19)
   - Other minor bug fixes and general code cleanup
 
 Changes in 0.3.1-alpha (Tue Oct 15 2013)
@@ -937,7 +937,7 @@ Changes in 0.3.1-alpha (Tue Oct 15 2013)
     are still in alpha, we didn't feel writing a converter was worth the time as
     it would take away from more important issues at this stage
   - Add a warning if there are multiple block chain databases of different types
-  - Fix issue with unexpected EOF in leveldb -- https://github.com/conformal/btcd/issues/18
+  - Fix issue with unexpected EOF in leveldb -- https://github.com/conformal/ltcd/issues/18
   - Fix issue preventing block 21066 on testnet -- https://github.com/conformal/btcchain/issues/1
   - Fix issue preventing block 96464 on testnet -- https://github.com/conformal/btcscript/issues/1
   - Optimize transaction lookups

@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/btcsuite/btcd/chaincfg"
+	. "github.com/ltcsuite/ltcd/chaincfg"
 )
 
 // Define some of the required parameters for a user-registered

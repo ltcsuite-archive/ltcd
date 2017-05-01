@@ -13,10 +13,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/ltcsuite/ltcd/blockchain"
+	"github.com/ltcsuite/ltcd/chaincfg"
+	"github.com/ltcsuite/ltcd/wire"
+	"github.com/ltcsuite/ltcutil"
 )
 
 // TestReorganization loads a set of test blocks which force a chain
@@ -74,7 +74,7 @@ func TestReorganization(t *testing.T) {
 
 // loadBlocks reads files containing bitcoin block data (gzipped but otherwise
 // in the format bitcoind writes) from disk and returns them as an array of
-// btcutil.Block.  This is largely borrowed from the test code in btcdb.
+// btcutil.Block.  This is largely borrowed from the test code in ltcdb.
 func loadBlocks(filename string) (blocks []*btcutil.Block, err error) {
 	filename = filepath.Join("testdata/", filename)
 

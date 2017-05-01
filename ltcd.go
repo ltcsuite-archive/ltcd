@@ -14,24 +14,24 @@ import (
 	"runtime/debug"
 	"runtime/pprof"
 
-	"github.com/btcsuite/btcd/blockchain/indexers"
-	"github.com/btcsuite/btcd/limits"
+	"github.com/ltcsuite/ltcd/blockchain/indexers"
+	"github.com/ltcsuite/ltcd/limits"
 )
 
 var (
 	cfg *config
 )
 
-// winServiceMain is only invoked on Windows.  It detects when btcd is running
+// winServiceMain is only invoked on Windows.  It detects when ltcd is running
 // as a service and reacts accordingly.
 var winServiceMain func() (bool, error)
 
-// btcdMain is the real main function for btcd.  It is necessary to work around
+// ltcdMain is the real main function for ltcd.  It is necessary to work around
 // the fact that deferred functions do not run when os.Exit() is called.  The
 // optional serverChan parameter is mainly used by the service code to be
 // notified with the server once it is setup so it can gracefully stop it when
 // requested from the service control manager.
-func btcdMain(serverChan chan<- *server) error {
+func ltcdMain(serverChan chan<- *server) error {
 	// Load configuration and parse command line.  This function also
 	// initializes logging and configures it accordingly.
 	tcfg, _, err := loadConfig()
@@ -45,20 +45,20 @@ func btcdMain(serverChan chan<- *server) error {
 	// triggered either from an OS signal such as SIGINT (Ctrl+C) or from
 	// another subsystem such as the RPC server.
 	interruptedChan := interruptListener()
-	defer btcdLog.Info("Shutdown complete")
+	defer ltcdLog.Info("Shutdown complete")
 
 	// Show version at startup.
-	btcdLog.Infof("Version %s", version())
+	ltcdLog.Infof("Version %s", version())
 
 	// Enable http profiling server if requested.
 	if cfg.Profile != "" {
 		go func() {
 			listenAddr := net.JoinHostPort("", cfg.Profile)
-			btcdLog.Infof("Profile server listening on %s", listenAddr)
+			ltcdLog.Infof("Profile server listening on %s", listenAddr)
 			profileRedirect := http.RedirectHandler("/debug/pprof",
 				http.StatusSeeOther)
 			http.Handle("/", profileRedirect)
-			btcdLog.Errorf("%v", http.ListenAndServe(listenAddr, nil))
+			ltcdLog.Errorf("%v", http.ListenAndServe(listenAddr, nil))
 		}()
 	}
 
@@ -66,7 +66,7 @@ func btcdMain(serverChan chan<- *server) error {
 	if cfg.CPUProfile != "" {
 		f, err := os.Create(cfg.CPUProfile)
 		if err != nil {
-			btcdLog.Errorf("Unable to create cpu profile: %v", err)
+			ltcdLog.Errorf("Unable to create cpu profile: %v", err)
 			return err
 		}
 		pprof.StartCPUProfile(f)
@@ -74,9 +74,9 @@ func btcdMain(serverChan chan<- *server) error {
 		defer pprof.StopCPUProfile()
 	}
 
-	// Perform upgrades to btcd as new versions require it.
+	// Perform upgrades to ltcd as new versions require it.
 	if err := doUpgrades(); err != nil {
-		btcdLog.Errorf("%v", err)
+		ltcdLog.Errorf("%v", err)
 		return err
 	}
 
@@ -88,12 +88,12 @@ func btcdMain(serverChan chan<- *server) error {
 	// Load the block database.
 	db, err := loadBlockDB()
 	if err != nil {
-		btcdLog.Errorf("%v", err)
+		ltcdLog.Errorf("%v", err)
 		return err
 	}
 	defer func() {
 		// Ensure the database is sync'd and closed on shutdown.
-		btcdLog.Infof("Gracefully shutting down the database...")
+		ltcdLog.Infof("Gracefully shutting down the database...")
 		db.Close()
 	}()
 
@@ -108,7 +108,7 @@ func btcdMain(serverChan chan<- *server) error {
 	// drops the address index since it relies on it.
 	if cfg.DropAddrIndex {
 		if err := indexers.DropAddrIndex(db); err != nil {
-			btcdLog.Errorf("%v", err)
+			ltcdLog.Errorf("%v", err)
 			return err
 		}
 
@@ -116,7 +116,7 @@ func btcdMain(serverChan chan<- *server) error {
 	}
 	if cfg.DropTxIndex {
 		if err := indexers.DropTxIndex(db); err != nil {
-			btcdLog.Errorf("%v", err)
+			ltcdLog.Errorf("%v", err)
 			return err
 		}
 
@@ -127,12 +127,12 @@ func btcdMain(serverChan chan<- *server) error {
 	server, err := newServer(cfg.Listeners, db, activeNetParams.Params)
 	if err != nil {
 		// TODO: this logging could do with some beautifying.
-		btcdLog.Errorf("Unable to start server on %v: %v",
+		ltcdLog.Errorf("Unable to start server on %v: %v",
 			cfg.Listeners, err)
 		return err
 	}
 	defer func() {
-		btcdLog.Infof("Gracefully shutting down the server...")
+		ltcdLog.Infof("Gracefully shutting down the server...")
 		server.Stop()
 		server.WaitForShutdown()
 		srvrLog.Infof("Server shutdown complete")
@@ -180,7 +180,7 @@ func main() {
 	}
 
 	// Work around defer not working after os.Exit()
-	if err := btcdMain(nil); err != nil {
+	if err := ltcdMain(nil); err != nil {
 		os.Exit(1)
 	}
 }

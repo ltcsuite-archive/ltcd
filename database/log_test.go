@@ -10,7 +10,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/btcsuite/btcd/database"
+	"github.com/ltcsuite/ltcd/database"
 )
 
 // TestSetLogWriter ensures the
