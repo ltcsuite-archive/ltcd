@@ -9,6 +9,8 @@ import (
 	"io"
 	"time"
 
+	"golang.org/x/crypto/scrypt"
+
 	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
 )
 
@@ -54,6 +56,23 @@ func (h *BlockHeader) BlockHash() chainhash.Hash {
 	_ = writeBlockHeader(buf, 0, h)
 
 	return chainhash.DoubleHashH(buf.Bytes())
+}
+
+// PowHash returns the litecoin scrypt hash of this block header. This value is
+// used to check the PoW on blocks advertised on the network.
+func (h *BlockHeader) PowHash() (*chainhash.Hash, error) {
+	var powHash chainhash.Hash
+
+	buf := bytes.NewBuffer(make([]byte, 0, MaxBlockHeaderPayload))
+	_ = writeBlockHeader(buf, 0, h)
+
+	scryptHash, err := scrypt.Key(buf.Bytes(), buf.Bytes(), 1024, 1, 1, 32)
+	if err != nil {
+		return nil, err
+	}
+	copy(powHash[:], scryptHash)
+
+	return &powHash, nil
 }
 
 // BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
