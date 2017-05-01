@@ -28,6 +28,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/btcsuite/websocket"
 	"github.com/ltcsuite/ltcd/blockchain"
 	"github.com/ltcsuite/ltcd/btcec"
 	"github.com/ltcsuite/ltcd/btcjson"
@@ -39,7 +40,6 @@ import (
 	"github.com/ltcsuite/ltcd/txscript"
 	"github.com/ltcsuite/ltcd/wire"
 	"github.com/ltcsuite/ltcutil"
-	"github.com/btcsuite/websocket"
 )
 
 // API version constants
