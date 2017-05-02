@@ -13,9 +13,9 @@ import (
 	"regexp"
 	"strings"
 
+	flags "github.com/jessevdk/go-flags"
 	"github.com/ltcsuite/ltcd/btcjson"
 	"github.com/ltcsuite/ltcutil"
-	flags "github.com/jessevdk/go-flags"
 )
 
 const (
@@ -27,9 +27,9 @@ const (
 
 var (
 	ltcdHomeDir           = btcutil.AppDataDir("ltcd", false)
-	btcctlHomeDir         = btcutil.AppDataDir("btcctl", false)
+	ltcctlHomeDir         = btcutil.AppDataDir("ltcctl", false)
 	btcwalletHomeDir      = btcutil.AppDataDir("btcwallet", false)
-	defaultConfigFile     = filepath.Join(btcctlHomeDir, "btcctl.conf")
+	defaultConfigFile     = filepath.Join(ltcctlHomeDir, "ltcctl.conf")
 	defaultRPCServer      = "localhost"
 	defaultRPCCertFile    = filepath.Join(ltcdHomeDir, "rpc.cert")
 	defaultWalletCertFile = filepath.Join(btcwalletHomeDir, "rpc.cert")
@@ -88,7 +88,7 @@ func listCommands() {
 	}
 }
 
-// config defines the configuration options for btcctl.
+// config defines the configuration options for ltcctl.
 //
 // See loadConfig for details on the configuration load process.
 type config struct {
@@ -103,7 +103,7 @@ type config struct {
 	Proxy         string `long:"proxy" description:"Connect via SOCKS5 proxy (eg. 127.0.0.1:9050)"`
 	ProxyUser     string `long:"proxyuser" description:"Username for proxy server"`
 	ProxyPass     string `long:"proxypass" default-mask:"-" description:"Password for proxy server"`
-	TestNet3      bool   `long:"testnet" description:"Connect to testnet"`
+	TestNet4      bool   `long:"testnet" description:"Connect to testnet"`
 	SimNet        bool   `long:"simnet" description:"Connect to the simulation test network"`
 	TLSSkipVerify bool   `long:"skipverify" description:"Do not verify tls certificates (not recommended!)"`
 	Wallet        bool   `long:"wallet" description:"Connect to wallet"`
@@ -118,9 +118,9 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 		switch {
 		case useTestNet3:
 			if useWallet {
-				defaultPort = "18332"
+				defaultPort = "19332"
 			} else {
-				defaultPort = "18334"
+				defaultPort = "19334"
 			}
 		case useSimNet:
 			if useWallet {
@@ -146,7 +146,7 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 func cleanAndExpandPath(path string) string {
 	// Expand initial ~ to OS specific home directory.
 	if strings.HasPrefix(path, "~") {
-		homeDir := filepath.Dir(btcctlHomeDir)
+		homeDir := filepath.Dir(ltcctlHomeDir)
 		path = strings.Replace(path, "~", homeDir, 1)
 	}
 
@@ -240,7 +240,7 @@ func loadConfig() (*config, []string, error) {
 
 	// Multiple networks can't be selected simultaneously.
 	numNets := 0
-	if cfg.TestNet3 {
+	if cfg.TestNet4 {
 		numNets++
 	}
 	if cfg.SimNet {
@@ -265,7 +265,7 @@ func loadConfig() (*config, []string, error) {
 
 	// Add default port to RPC server based on --testnet and --wallet flags
 	// if needed.
-	cfg.RPCServer = normalizeAddress(cfg.RPCServer, cfg.TestNet3,
+	cfg.RPCServer = normalizeAddress(cfg.RPCServer, cfg.TestNet4,
 		cfg.SimNet, cfg.Wallet)
 
 	return &cfg, remainingArgs, nil
