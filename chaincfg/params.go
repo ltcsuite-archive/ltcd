@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/Roasbeef/btcd/blockchain"
+	"github.com/btcsuite/btcd/blockchain"
 	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
 	"github.com/ltcsuite/ltcd/wire"
 )
