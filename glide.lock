@@ -1,16 +1,24 @@
-hash: ea6e6ffa31517aacb35de06b097975229096253bf658d302f2d6652fde91b3f1
-updated: 2017-01-27T20:06:58.5779336-06:00
+hash: 88205d35956e15addd9bdad1761c55066680af954dfde68c18efd80d4dd6fa1a
+updated: 2017-05-01T22:54:59.14228531-07:00
 imports:
+- name: github.com/btcsuite/btcd
+  version: 4b348c1d33373d672edd83fc576892d0e46686d2
+  subpackages:
+  - btcec
+  - btcjson
+  - chaincfg
+  - chaincfg/chainhash
+  - wire
 - name: github.com/btcsuite/btclog
   version: 73889fb79bd687870312b6e40effcecffbd57d30
 - name: github.com/btcsuite/btcrpcclient
-  version: abcdfb702a7ca67e4a32c10be380c63216bd69fe
+  version: eef39394b7eb639be140973f8f2dcc2020784f5f
 - name: github.com/btcsuite/btcutil
-  version: 86346b5a958c0cf94186b87855469ae991be501c
+  version: a5ecb5d9547afe8d1672073dbdc348203de744a0
   subpackages:
   - base58
-  - bloom
-  - hdkeychain
+- name: github.com/btcsuite/fastsha256
+  version: 637e656429416087660c84436a2a035d69d54e2e
 - name: github.com/btcsuite/go-socks
   version: 4720035b7bfd2a9bb130b1c184f8bbe41b6f0d0f
   subpackages:
@@ -35,7 +43,7 @@ imports:
   - leveldb/table
   - leveldb/util
 - name: github.com/btcsuite/seelog
-  version: 313961b101eb55f65ae0f03ddd4e322731763b6c
+  version: ae8891d029dd3c269dcfd6f261ad23e761acd99f
 - name: github.com/btcsuite/snappy-go
   version: 0bdef8d067237991ddaa1bb6072a740bc40601ba
 - name: github.com/btcsuite/websocket
@@ -54,4 +62,15 @@ imports:
   - spew
 - name: github.com/jessevdk/go-flags
   version: 1679536dcc895411a9f5848d9a0250be7856448c
+- name: github.com/ltcsuite/ltcutil
+  version: 0fe6455d26205060fef40123d580c040849b1fe8
+  subpackages:
+  - base58
+  - bloom
+  - hdkeychain
+- name: golang.org/x/crypto
+  version: 96846453c37f0876340a66a47f3f75b1f3a6cd2d
+  subpackages:
+  - pbkdf2
+  - scrypt
 testImports: []
