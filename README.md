@@ -1,8 +1,7 @@
 ltcd
 ====
 
-[![Build Status](https://travis-ci.org/ltcsuite/ltcd.png?branch=master)]
-(https://travis-ci.org/ltcsuite/ltcd)
+[![Build Status](https://travis-ci.org/ltcsuite/ltcd.png?branch=master)](https://travis-ci.org/ltcsuite/ltcd)
 
 ltcd is an alternative full node litecoin implementation written in Go (golang).
 
@@ -34,7 +33,7 @@ which are both under active development.
 
 ## Requirements
 
-[Go](http://golang.org) 1.6 or newer.
+[Go](http://golang.org) 1.7 or newer.
 
 ## Installation
 
