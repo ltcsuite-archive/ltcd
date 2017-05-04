@@ -5,8 +5,7 @@ ltcd
 
 ltcd is an alternative full node litecoin implementation written in Go (golang).
 
-This project is currently under active development and is in a Beta state.  It
-is extremely stable and has been in production use since October 2013.
+This project is currently under active development and is in a Beta state.
 
 It properly downloads, validates, and serves the block chain using the exact
 rules (including consensus bugs) for block acceptance as Litecoin Core.  We have
