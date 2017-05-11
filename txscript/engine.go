@@ -9,9 +9,9 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/btcsuite/fastsha256"
 	"github.com/ltcsuite/ltcd/btcec"
 	"github.com/ltcsuite/ltcd/wire"
-	"github.com/btcsuite/fastsha256"
 )
 
 // ScriptFlags is a bitmask defining additional operations or tests that will be
@@ -245,17 +245,20 @@ func (vm *Engine) curPC() (script int, off int, err error) {
 // verifyWitnessProgram validates the stored witness program using the passed
 // witness as input.
 func (vm *Engine) verifyWitnessProgram(witness [][]byte) error {
-	// All elements within the witness stack must not be greater than the
-	// maximum bytes which are allowed to be pushed onto the stack.
-	for _, witElement := range witness {
-		if len(witElement) > MaxScriptElementSize {
-			str := fmt.Sprintf("element size %d exceeds max allowed size %d",
-				len(witElement), MaxScriptElementSize)
-			return scriptError(ErrElementTooBig, str)
-		}
-	}
-
 	if vm.witnessVersion == 0 {
+		validateLengths := func(checkWitness [][]byte) error {
+			// All elements within the witness stack must not be greater than the
+			// maximum bytes which are allowed to be pushed onto the stack.
+			for i, witElement := range checkWitness {
+				if len(witElement) > MaxScriptElementSize {
+					str := fmt.Sprintf("element size %d (position: %d) exceeds max allowed size %d",
+						len(witElement), i, MaxScriptElementSize)
+					return scriptError(ErrElementTooBig, str)
+				}
+			}
+			return nil
+		}
+
 		switch len(vm.witnessProgram) {
 		case payToWitnessPubKeyHashDataSize: // P2WKH
 			// The witness stack should consist of exactly two
@@ -264,6 +267,10 @@ func (vm *Engine) verifyWitnessProgram(witness [][]byte) error {
 				err := fmt.Sprintf("should have exactly two "+
 					"items in witness, instead have %v", len(witness))
 				return scriptError(ErrWitnessProgramMismatch, err)
+			}
+
+			if err := validateLengths(witness); err != nil {
+				return err
 			}
 
 			// Now we'll resume execution as if it were a
@@ -291,10 +298,22 @@ func (vm *Engine) verifyWitnessProgram(witness [][]byte) error {
 
 			}
 
+			// pop witnessScript
+			pkScript, witness := witness[len(witness)-1], witness[:len(witness)-1]
+
+			if err := validateLengths(witness); err != nil {
+				return err
+			}
+
 			// Ensure that the serialized pkScript
-			// at the end of the witness stack
+			// does not exceed the size limit and
 			// matches the witness program.
-			pkScript := witness[len(witness)-1]
+			if len(pkScript) > MaxScriptSize {
+				str := fmt.Sprintf("witnessScript exceeds max allowed size %d",
+					len(pkScript), MaxScriptSize)
+				return scriptError(ErrElementTooBig, str)
+			}
+
 			witnessHash := fastsha256.Sum256(pkScript)
 			if !bytes.Equal(witnessHash[:], vm.witnessProgram) {
 				return scriptError(ErrWitnessProgramMismatch,
@@ -311,7 +330,7 @@ func (vm *Engine) verifyWitnessProgram(witness [][]byte) error {
 			// set the pkScript to be the next script
 			// executed.
 			vm.scripts = append(vm.scripts, pops)
-			vm.SetStack(witness[:len(witness)-1])
+			vm.SetStack(witness)
 		default:
 			errStr := fmt.Sprintf("length of witness program "+
 				"must either be 20 or 32 bytes, instead is %v bytes",
