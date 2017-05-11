@@ -16,8 +16,9 @@ import (
 
 // Bip16Activation is the timestamp where BIP0016 is valid to use in the
 // blockchain.  To be used to determine if BIP0016 should be called for or not.
-// This timestamp corresponds to Sun Apr 1 00:00:00 UTC 2012.
-var Bip16Activation = time.Unix(1333238400, 0)
+// This timestamp corresponds to Oct 1 00:00:00 UTC 2012.
+// From https://github.com/litecoin-project/litecoin/blob/3b4ed770f88229b11bf62b90f128f3054b17ab36/src/main.cpp#L2400
+var Bip16Activation = time.Unix(1349049600, 0)
 
 // SigHashType represents hash type bits at the end of a signature.
 type SigHashType uint32
