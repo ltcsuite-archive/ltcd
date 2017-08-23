@@ -28,7 +28,7 @@ type params struct {
 // to emulate the full reference implementation RPC API.
 var mainNetParams = params{
 	Params:  &chaincfg.MainNetParams,
-	rpcPort: "8334",
+	rpcPort: "9334",
 }
 
 // regressionNetParams contains parameters specific to the regression test
@@ -37,7 +37,7 @@ var mainNetParams = params{
 // details.
 var regressionNetParams = params{
 	Params:  &chaincfg.RegressionNetParams,
-	rpcPort: "18334",
+	rpcPort: "19334",
 }
 
 // testNet4Params contains parameters specific to the test network (version 4)
@@ -56,17 +56,17 @@ var simNetParams = params{
 }
 
 // netName returns the name used when referring to a bitcoin network.  At the
-// time of writing, ltcd currently places blocks for testnet version 3 in the
+// time of writing, ltcd currently places blocks for testnet version 4 in the
 // data and log directory "testnet", which does not match the Name field of the
 // chaincfg parameters.  This function can be used to override this directory
-// name as "testnet" when the passed active network matches wire.TestNet3.
+// name as "testnet" when the passed active network matches wire.TestNet4.
 //
 // A proper upgrade to move the data and log directories for this network to
-// "testnet3" is planned for the future, at which point this function can be
+// "testnet4" is planned for the future, at which point this function can be
 // removed and the network parameter's name used instead.
 func netName(chainParams *params) string {
 	switch chainParams.Net {
-	case wire.TestNet3:
+	case wire.TestNet4:
 		return "testnet"
 	default:
 		return chainParams.Name

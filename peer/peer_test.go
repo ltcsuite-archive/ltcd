@@ -245,13 +245,13 @@ func TestPeerConnection(t *testing.T) {
 			"basic handshake",
 			func() (*peer.Peer, *peer.Peer, error) {
 				inConn, outConn := pipe(
-					&conn{raddr: "10.0.0.1:8333"},
-					&conn{raddr: "10.0.0.2:8333"},
+					&conn{raddr: "10.0.0.1:9333"},
+					&conn{raddr: "10.0.0.2:9333"},
 				)
 				inPeer := peer.NewInboundPeer(peerCfg)
 				inPeer.AssociateConnection(inConn)
 
-				outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.2:8333")
+				outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.2:9333")
 				if err != nil {
 					return nil, nil, err
 				}
@@ -271,13 +271,13 @@ func TestPeerConnection(t *testing.T) {
 			"socks proxy",
 			func() (*peer.Peer, *peer.Peer, error) {
 				inConn, outConn := pipe(
-					&conn{raddr: "10.0.0.1:8333", proxy: true},
-					&conn{raddr: "10.0.0.2:8333"},
+					&conn{raddr: "10.0.0.1:9333", proxy: true},
+					&conn{raddr: "10.0.0.2:9333"},
 				)
 				inPeer := peer.NewInboundPeer(peerCfg)
 				inPeer.AssociateConnection(inConn)
 
-				outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.2:8333")
+				outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.2:9333")
 				if err != nil {
 					return nil, nil, err
 				}
@@ -393,8 +393,8 @@ func TestPeerListeners(t *testing.T) {
 		Services:         wire.SFNodeBloom,
 	}
 	inConn, outConn := pipe(
-		&conn{raddr: "10.0.0.1:8333"},
-		&conn{raddr: "10.0.0.2:8333"},
+		&conn{raddr: "10.0.0.1:9333"},
+		&conn{raddr: "10.0.0.2:9333"},
 	)
 	inPeer := peer.NewInboundPeer(peerCfg)
 	inPeer.AssociateConnection(inConn)
@@ -404,7 +404,7 @@ func TestPeerListeners(t *testing.T) {
 			verack <- struct{}{}
 		},
 	}
-	outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:8333")
+	outPeer, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:9333")
 	if err != nil {
 		t.Errorf("NewOutboundPeer: unexpected err %v\n", err)
 		return
@@ -542,9 +542,9 @@ func TestOutboundPeer(t *testing.T) {
 	}
 
 	r, w := io.Pipe()
-	c := &conn{raddr: "10.0.0.1:8333", Writer: w, Reader: r}
+	c := &conn{raddr: "10.0.0.1:9333", Writer: w, Reader: r}
 
-	p, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:8333")
+	p, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:9333")
 	if err != nil {
 		t.Errorf("NewOutboundPeer: unexpected err - %v\n", err)
 		return
@@ -599,8 +599,8 @@ func TestOutboundPeer(t *testing.T) {
 
 	peerCfg.NewestBlock = newestBlock
 	r1, w1 := io.Pipe()
-	c1 := &conn{raddr: "10.0.0.1:8333", Writer: w1, Reader: r1}
-	p1, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:8333")
+	c1 := &conn{raddr: "10.0.0.1:9333", Writer: w1, Reader: r1}
+	p1, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:9333")
 	if err != nil {
 		t.Errorf("NewOutboundPeer: unexpected err - %v\n", err)
 		return
@@ -629,8 +629,8 @@ func TestOutboundPeer(t *testing.T) {
 	peerCfg.ChainParams = &chaincfg.RegressionNetParams
 	peerCfg.Services = wire.SFNodeBloom
 	r2, w2 := io.Pipe()
-	c2 := &conn{raddr: "10.0.0.1:8333", Writer: w2, Reader: r2}
-	p2, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:8333")
+	c2 := &conn{raddr: "10.0.0.1:9333", Writer: w2, Reader: r2}
+	p2, err := peer.NewOutboundPeer(peerCfg, "10.0.0.1:9333")
 	if err != nil {
 		t.Errorf("NewOutboundPeer: unexpected err - %v\n", err)
 		return

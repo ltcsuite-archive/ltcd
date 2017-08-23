@@ -2218,7 +2218,7 @@ func handleGetInfo(s *rpcServer, cmd interface{}, closeChan <-chan struct{}) (in
 		Connections:     s.server.ConnectedCount(),
 		Proxy:           cfg.Proxy,
 		Difficulty:      getDifficultyRatio(best.Bits),
-		TestNet:         cfg.TestNet3,
+		TestNet:         cfg.TestNet4,
 		RelayFee:        cfg.minRelayTxFee.ToBTC(),
 	}
 
@@ -2272,7 +2272,7 @@ func handleGetMiningInfo(s *rpcServer, cmd interface{}, closeChan <-chan struct{
 		HashesPerSec:       int64(s.server.cpuMiner.HashesPerSecond()),
 		NetworkHashPS:      networkHashesPerSec,
 		PooledTx:           uint64(s.server.txMemPool.Count()),
-		TestNet:            cfg.TestNet3,
+		TestNet:            cfg.TestNet4,
 	}
 	return &result, nil
 }
