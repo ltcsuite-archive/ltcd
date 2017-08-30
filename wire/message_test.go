@@ -40,10 +40,10 @@ func TestMessage(t *testing.T) {
 	// Create the various types of messages to test.
 
 	// MsgVersion.
-	addrYou := &net.TCPAddr{IP: net.ParseIP("192.168.0.1"), Port: 8333}
+	addrYou := &net.TCPAddr{IP: net.ParseIP("192.168.0.1"), Port: 9333}
 	you := NewNetAddress(addrYou, SFNodeNetwork)
 	you.Timestamp = time.Time{} // Version message has zero value timestamp.
-	addrMe := &net.TCPAddr{IP: net.ParseIP("127.0.0.1"), Port: 8333}
+	addrMe := &net.TCPAddr{IP: net.ParseIP("127.0.0.1"), Port: 9333}
 	me := NewNetAddress(addrMe, SFNodeNetwork)
 	me.Timestamp = time.Time{} // Version message has zero value timestamp.
 	msgVersion := NewMsgVersion(me, you, 123123, 0)
@@ -195,8 +195,8 @@ func TestReadMessageWireErrors(t *testing.T) {
 			testErr.Error(), wantErr)
 	}
 
-	// Wire encoded bytes for main and testnet3 networks magic identifiers.
-	testNet3Bytes := makeHeader(TestNet3, "", 0, 0)
+	// Wire encoded bytes for main and testnet4 networks magic identifiers.
+	testNet4Bytes := makeHeader(TestNet4, "", 0, 0)
 
 	// Wire encoded bytes for a message that exceeds max overall message
 	// length.
@@ -254,12 +254,12 @@ func TestReadMessageWireErrors(t *testing.T) {
 			0,
 		},
 
-		// Wrong network.  Want MainNet, but giving TestNet3.
+		// Wrong network.  Want MainNet, but giving TestNet4.
 		{
-			testNet3Bytes,
+			testNet4Bytes,
 			pver,
 			btcnet,
-			len(testNet3Bytes),
+			len(testNet4Bytes),
 			&MessageError{},
 			24,
 		},

@@ -111,12 +111,12 @@ type config struct {
 
 // normalizeAddress returns addr with the passed default port appended if
 // there is not already a port specified.
-func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) string {
+func normalizeAddress(addr string, useTestNet4, useSimNet, useWallet bool) string {
 	_, _, err := net.SplitHostPort(addr)
 	if err != nil {
 		var defaultPort string
 		switch {
-		case useTestNet3:
+		case useTestNet4:
 			if useWallet {
 				defaultPort = "19332"
 			} else {
@@ -130,9 +130,9 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 			}
 		default:
 			if useWallet {
-				defaultPort = "8332"
+				defaultPort = "9332"
 			} else {
-				defaultPort = "8334"
+				defaultPort = "9334"
 			}
 		}
 

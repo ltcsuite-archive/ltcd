@@ -77,7 +77,7 @@ latest protocol version this package supports and is typically the value to use
 for all outbound connections before a potentially lower protocol version is
 negotiated.
 
-Bitcoin Network
+Litecoin Network
 
 The bitcoin network is a magic number which is used to identify the start of a
 message and which bitcoin network the message applies to.  This package provides
@@ -85,7 +85,7 @@ the following constants:
 
 	wire.MainNet
 	wire.TestNet  (Regression test network)
-	wire.TestNet3 (Test network version 3)
+	wire.TestNet4 (Test network version 4)
 	wire.SimNet   (Simulation test network)
 
 Determining Message Type
