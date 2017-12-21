@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/database"
-	"github.com/ltcsuite/ltcd/wire"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/database"
+	"github.com/atticlab/ltcd/wire"
 )
 
 // blockNode represents a block within the block chain and is primarily used to

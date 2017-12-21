@@ -5,9 +5,9 @@
 package mining
 
 import (
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 const (

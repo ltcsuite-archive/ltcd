@@ -12,15 +12,15 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/blockchain/fullblocktests"
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/database"
-	_ "github.com/ltcsuite/ltcd/database/ffldb"
-	"github.com/ltcsuite/ltcd/txscript"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/blockchain/fullblocktests"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/database"
+	_ "github.com/atticlab/ltcd/database/ffldb"
+	"github.com/atticlab/ltcd/txscript"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 const (

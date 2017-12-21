@@ -9,7 +9,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcutil"
 )
 
 // TestTxFeePrioHeap ensures the priority queue for transaction fees and

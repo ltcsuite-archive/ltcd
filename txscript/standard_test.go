@@ -10,9 +10,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 // mustParseShortForm parses the passed short form script and returns the

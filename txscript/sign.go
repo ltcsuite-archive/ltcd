@@ -8,10 +8,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/ltcsuite/ltcd/btcec"
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/btcec"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 // RawTxInWitnessSignature returns the serialized ECDA signature for the input

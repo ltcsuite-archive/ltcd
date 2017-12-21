@@ -13,10 +13,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ltcsuite/ltcd/btcjson"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/btcjson"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 var (

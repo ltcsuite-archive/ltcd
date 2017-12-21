@@ -10,9 +10,9 @@ package indexers
 import (
 	"encoding/binary"
 
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/database"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/database"
+	"github.com/atticlab/ltcutil"
 )
 
 var (

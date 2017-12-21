@@ -10,9 +10,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 
-	"github.com/ltcsuite/ltcd/btcjson"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/wire"
+	"github.com/atticlab/ltcd/btcjson"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/wire"
 )
 
 // FutureGetBestBlockHashResult is a future promise to deliver the result of a

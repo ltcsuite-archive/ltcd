@@ -14,14 +14,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/btcec"
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/integration/rpctest"
-	"github.com/ltcsuite/ltcd/txscript"
-	"github.com/ltcsuite/ltcd/wire"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/btcec"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/integration/rpctest"
+	"github.com/atticlab/ltcd/txscript"
+	"github.com/atticlab/ltcd/wire"
+	"github.com/atticlab/ltcutil"
 )
 
 const (

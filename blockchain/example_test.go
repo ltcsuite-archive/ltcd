@@ -10,11 +10,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/database"
-	_ "github.com/ltcsuite/ltcd/database/ffldb"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/database"
+	_ "github.com/atticlab/ltcd/database/ffldb"
+	"github.com/atticlab/ltcutil"
 )
 
 // This example demonstrates how to create a new chain instance and use

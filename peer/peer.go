@@ -19,10 +19,10 @@ import (
 
 	"github.com/btcsuite/go-socks/socks"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ltcsuite/ltcd/blockchain"
-	"github.com/ltcsuite/ltcd/chaincfg"
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/wire"
+	"github.com/atticlab/ltcd/blockchain"
+	"github.com/atticlab/ltcd/chaincfg"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/wire"
 )
 
 const (
