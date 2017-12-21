@@ -76,7 +76,7 @@ be an exhaustive list.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/ltcsuite/ltcd/mempool
+$ go get -u github.com/atticlab/ltcd/mempool
 ```
 
 ## License
