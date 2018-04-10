@@ -2,6 +2,14 @@
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
+// Updated at April 10, 2018 by xbis
+// according to https://github.com/litecoin-project/litecoin/blob/master/src/chainparams.cpp
+// constants 
+//      base58Prefixes[PUBKEY_ADDRESS]
+//      base58Prefixes[SCRIPT_ADDRESS]
+//      base58Prefixes[SCRIPT_ADDRESS2] 
+// changed in MainNet, TestNet, RegTest
+
 package chaincfg
 
 import (
@@ -307,9 +315,11 @@ var MainNetParams = Params{
 	Bech32HRPSegwit: "ltc", // always ltc for main net
 
 	// Address encoding magics
-	PubKeyHashAddrID:        0x30, // starts with L
-	ScriptHashAddrID:        0x50, // starts with M
-	PrivateKeyID:            0xB0, // starts with 6 (uncompressed) or T (compressed)
+	PubKeyHashAddrID:        48,   // 0x30 - starts with L
+    // ScriptHashAddrID:              0x50 - Invalid value
+    // ScriptHashAddrID:     5        0x05 - Deprecated    
+    ScriptHashAddrID:        50,   // 0x32 
+	PrivateKeyID:            176,  // 0xb0  starts with 6 (uncompressed) or T (compressed)
 	WitnessPubKeyHashAddrID: 0x06, // starts with p2
 	WitnessScriptHashAddrID: 0x0A, // starts with 7Xh
 
