@@ -26,8 +26,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ltcsuite/ltcutil"
-	"github.com/ltcsuite/ltcd/chaincfg"
+	"github.com/atticlab/ltcutil"
+	"github.com/atticlab/ltcd/chaincfg"
 )
 
 var testnet = flag.Bool("testnet", false, "operate on the testnet Bitcoin network")
@@ -58,7 +58,7 @@ func main() {
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/ltcsuite/ltcd/chaincfg
+$ go get -u github.com/atticlab/ltcd/chaincfg
 ```
 
 ## GPG Verification Key

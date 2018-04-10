@@ -7,10 +7,10 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
-	"github.com/ltcsuite/ltcd/database"
-	"github.com/ltcsuite/ltcd/txscript"
-	"github.com/ltcsuite/ltcutil"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/database"
+	"github.com/atticlab/ltcd/txscript"
+	"github.com/atticlab/ltcutil"
 )
 
 // utxoOutput houses details about an individual unspent transaction output such

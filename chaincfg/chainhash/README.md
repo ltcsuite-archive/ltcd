@@ -11,7 +11,7 @@ specific hash algorithm to be abstracted.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/ltcsuite/ltcd/chaincfg/chainhash
+$ go get -u github.com/atticlab/ltcd/chaincfg/chainhash
 ```
 
 ## GPG Verification Key

@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ltcsuite/ltcd/chaincfg/chainhash"
+	"github.com/atticlab/ltcd/chaincfg/chainhash"
 	"github.com/davecgh/go-spew/spew"
 )
 

@@ -20,7 +20,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/ltcsuite/ltcd/integration/rpctest
+$ go get -u github.com/atticlab/ltcd/integration/rpctest
 ```
 
 ## License
@@ -53,7 +53,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/ltcsuite/ltcd/rpctest
+$ go get -u github.com/atticlab/ltcd/rpctest
 ```
 
 ## License

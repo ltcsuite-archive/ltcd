@@ -39,7 +39,7 @@ which are both under active development.
 
 #### Windows - MSI Available
 
-https://github.com/ltcsuite/ltcd/releases
+https://github.com/atticlab/ltcd/releases
 
 #### Linux/BSD/MacOSX/POSIX - Build from Source
 
@@ -62,8 +62,8 @@ recommended that `GOPATH` is set to a directory in your home directory such as
 
 ```bash
 $ go get -u github.com/Masterminds/glide
-$ git clone https://github.com/ltcsuite/ltcd $GOPATH/src/github.com/ltcsuite/ltcd
-$ cd $GOPATH/src/github.com/ltcsuite/ltcd
+$ git clone https://github.com/atticlab/ltcd $GOPATH/src/github.com/atticlab/ltcd
+$ cd $GOPATH/src/github.com/atticlab/ltcd
 $ glide install
 $ go install . ./cmd/...
 ```
@@ -83,7 +83,7 @@ Install a newer MSI
 - Run the following commands to update ltcd, all dependencies, and install it:
 
 ```bash
-$ cd $GOPATH/src/github.com/ltcsuite/ltcd
+$ cd $GOPATH/src/github.com/atticlab/ltcd
 $ git pull && glide install
 $ go install . ./cmd/...
 ```

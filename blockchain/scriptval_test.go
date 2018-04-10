@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/ltcsuite/ltcd/txscript"
+	"github.com/atticlab/ltcd/txscript"
 )
 
 // TestCheckBlockScripts ensures that validating the all of the scripts in a
