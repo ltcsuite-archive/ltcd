@@ -505,8 +505,9 @@ var SimNetParams = Params{
 	BIP0066Height:            0, // Always active on simnet
 	CoinbaseMaturity:         100,
 	SubsidyReductionInterval: 840000,
+	// allow block every second to keep difficulty at its minimum
 	TargetTimespan:           (time.Hour * 24 * 3) + (time.Hour * 12), // 3.5 days
-	TargetTimePerBlock:       (time.Minute * 2) + (time.Second * 30),  // 2.5 minutes
+	TargetTimePerBlock:       (time.Minute * 0) + (time.Second * 1),  // every second
 	RetargetAdjustmentFactor: 4,                   // 25% less, 400% more
 	ReduceMinDifficulty:      true,
 	MinDiffReductionTime:     time.Minute * 5, // TargetTimePerBlock * 2
