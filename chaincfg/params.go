@@ -504,12 +504,13 @@ var SimNetParams = Params{
 	BIP0065Height:            0, // Always active on simnet
 	BIP0066Height:            0, // Always active on simnet
 	CoinbaseMaturity:         100,
-	SubsidyReductionInterval: 210000,
-	TargetTimespan:           time.Hour * 24 * 14, // 14 days
-	TargetTimePerBlock:       time.Minute * 10,    // 10 minutes
+	SubsidyReductionInterval: 840000,
+	// allow block every second to keep difficulty at its minimum
+	TargetTimespan:           (time.Hour * 24 * 3) + (time.Hour * 12), // 3.5 days
+	TargetTimePerBlock:       (time.Minute * 0) + (time.Second * 1),  // every second
 	RetargetAdjustmentFactor: 4,                   // 25% less, 400% more
 	ReduceMinDifficulty:      true,
-	MinDiffReductionTime:     time.Minute * 20, // TargetTimePerBlock * 2
+	MinDiffReductionTime:     time.Minute * 5, // TargetTimePerBlock * 2
 	GenerateSupported:        true,
 
 	// Checkpoints ordered from oldest to newest.
@@ -559,7 +560,7 @@ var SimNetParams = Params{
 
 	// BIP44 coin type used in the hierarchical deterministic path for
 	// address generation.
-	HDCoinType: 115, // ASCII for s
+	HDCoinType: 1,
 }
 
 var (
